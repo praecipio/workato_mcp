@@ -1,0 +1,53 @@
+{
+  "manifest_version": "0.3",
+  "name": "praecipio-workato",
+  "display_name": "Praecipio Workato",
+  "version": "1.0.0",
+  "description": "Review, assess, and create Workato recipes from Claude Desktop",
+  "author": {
+    "name": "Praecipio Consulting"
+  },
+  "server": {
+    "type": "node",
+    "entry_point": "dist/index.js",
+    "mcp_config": {
+      "command": "node",
+      "args": ["${__dirname}/dist/index.js"],
+      "env": {
+        "WORKATO_API_KEY": "${user_config.workato_api_key}",
+        "WORKATO_BASE_URL": "${user_config.workato_base_url}"
+      }
+    }
+  },
+  "user_config": {
+    "workato_api_key": {
+      "type": "string",
+      "title": "Workato API Key",
+      "description": "Bearer token from Workato Workspace Admin > API Clients",
+      "sensitive": true,
+      "required": true
+    },
+    "workato_base_url": {
+      "type": "string",
+      "title": "Workato Base URL",
+      "description": "API base URL (US: https://www.workato.com/api, EU: https://app.eu.workato.com/api)",
+      "required": false
+    }
+  },
+  "tools": [
+    { "name": "workato_list_recipes", "description": "List and filter Workato recipes" },
+    { "name": "workato_get_recipe", "description": "Get recipe metadata" },
+    { "name": "workato_get_recipe_code", "description": "Get recipe logic as summary or raw JSON" },
+    { "name": "workato_create_recipe", "description": "Create a new recipe" },
+    { "name": "workato_update_recipe", "description": "Update a recipe" },
+    { "name": "workato_toggle_recipe", "description": "Start or stop a recipe" },
+    { "name": "workato_get_jobs", "description": "Get job history for a recipe" },
+    { "name": "workato_list_connections", "description": "List connections and auth status" },
+    { "name": "workato_list_folders", "description": "List projects and folders" }
+  ],
+  "tools_generated": false,
+  "keywords": ["workato", "integration", "automation", "iPaaS"],
+  "compatibility": {
+    "platforms": ["darwin", "win32"]
+  }
+}
