@@ -31,6 +31,7 @@
       "type": "string",
       "title": "Workato Base URL",
       "description": "API base URL (US: https://www.workato.com/api, EU: https://app.eu.workato.com/api)",
+      "default": "https://www.workato.com/api",
       "required": false
     }
   },
